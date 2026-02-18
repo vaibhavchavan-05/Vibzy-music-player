@@ -1,0 +1,58 @@
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: #fff;
+}
+
+.input-label {
+  font-size: 13px;
+  color: #e6e6e6;
+}
+
+.input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-field {
+  width: 100%;
+  padding: 8px;
+  padding-right: 38px;
+  border-radius: 6px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+  outline: none;
+}
+
+.input-eye-btn {
+  position: absolute;
+  right: 6px;
+  background: transparent;
+  border: none;
+  color: #cfcfcf;
+  cursor: pointer;
+  padding: 4px;
+}
+.editprofile-password-toggle {
+  background: none;
+  border: none;
+  color: #2563eb; /* blue */
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+  margin: 12px 0 20px;
+  align-self: flex-start;
+}
+
+.editprofile-password-toggle:hover {
+  color: #1e40af;
+}
+
+.editprofile-password-toggle:disabled {
+  color: #aaa;
+  cursor: not-allowed;
+}

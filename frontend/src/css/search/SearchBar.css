@@ -1,0 +1,125 @@
+.searchbar-root {
+  @apply w-full mb-8 mt-4 px-0;
+  animation: fadeInDown 0.6s ease-out;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Input wrapper for icon */
+.searchbar-input-wrapper {
+  @apply relative w-full;
+}
+
+.searchbar-input {
+  @apply w-full h-14 pl-5 pr-14
+    text-white text-base
+    rounded-2xl
+    transition-all duration-300;
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid rgba(168, 85, 247, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.searchbar-input::placeholder {
+  color: rgba(156, 163, 175, 0.6);
+  font-weight: 400;
+}
+
+.searchbar-input:focus {
+  @apply outline-none;
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(168, 85, 247, 0.6);
+  box-shadow: 0 4px 20px rgba(168, 85, 247, 0.3),
+    0 0 40px rgba(168, 85, 247, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Search icon */
+.searchbar-icon {
+  @apply absolute right-5 top-1/2 -translate-y-1/2
+    pointer-events-none;
+  color: rgba(168, 85, 247, 0.5);
+  transition: all 0.3s ease;
+}
+
+.searchbar-input-wrapper:focus-within .searchbar-icon {
+  color: rgba(168, 85, 247, 1);
+  filter: drop-shadow(0 2px 8px rgba(168, 85, 247, 0.6));
+  transform: translateY(-50%) scale(1.1);
+}
+
+.searchbar-loading {
+  @apply mt-3 text-sm font-medium text-center;
+  color: rgba(168, 85, 247, 0.9);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.searchbar-empty {
+  @apply mt-6 text-center text-base font-medium;
+  color: rgba(156, 163, 175, 0.6);
+  animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .searchbar-root {
+    @apply mb-5;
+  }
+
+  .searchbar-input {
+    @apply h-12 text-sm pl-4 pr-12;
+    border-radius: 1rem;
+  }
+
+  .searchbar-icon {
+    @apply right-4;
+  }
+
+  .searchbar-empty {
+    @apply text-sm mt-4;
+  }
+}
+
+@media (max-width: 480px) {
+  .searchbar-root {
+    @apply mb-4;
+  }
+
+  .searchbar-input {
+    @apply h-11 text-sm;
+    border-radius: 0.875rem;
+  }
+
+  .searchbar-empty {
+    @apply text-xs mt-3;
+  }
+}

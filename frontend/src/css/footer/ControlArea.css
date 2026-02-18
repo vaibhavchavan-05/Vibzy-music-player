@@ -1,0 +1,212 @@
+.control-root {
+  @apply flex flex-col w-[40%] gap-2 items-center;
+  animation: fadeInUp 0.6s ease-out 0.2s both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Control buttons row */
+.control-buttons {
+  @apply flex items-center justify-center gap-3;
+}
+
+/* Icon buttons (prev, next, like) */
+.control-icon-btn {
+  @apply bg-transparent border-none cursor-pointer p-2.5 inline-flex items-center justify-center 
+         rounded-full transition-all duration-300;
+  position: relative;
+}
+
+.control-icon-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: linear-gradient(
+    135deg,
+    rgba(168, 85, 247, 0.2),
+    rgba(236, 72, 153, 0.2)
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.control-icon-btn:hover::before {
+  opacity: 1;
+}
+
+.control-icon-btn:hover {
+  transform: scale(1.1);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 15px rgba(168, 85, 247, 0.3);
+}
+
+.control-icon-btn:active {
+  transform: scale(0.95);
+}
+
+.control-icon-btn svg {
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0 2px 8px rgba(168, 85, 247, 0.4));
+  transition: filter 0.3s ease;
+}
+
+.control-icon-btn:hover svg {
+  filter: drop-shadow(0 4px 12px rgba(168, 85, 247, 0.6));
+}
+
+/* Play/Pause button (larger) */
+.control-play-btn {
+  @apply bg-transparent border-none cursor-pointer p-2 inline-flex items-center justify-center 
+         rounded-full transition-all duration-300;
+  position: relative;
+}
+
+.control-play-btn::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 9999px;
+  background: linear-gradient(
+    135deg,
+    rgba(168, 85, 247, 0.3),
+    rgba(236, 72, 153, 0.3)
+  );
+  opacity: 0;
+  transition: all 0.3s ease;
+  filter: blur(8px);
+}
+
+.control-play-btn:hover::before {
+  opacity: 1;
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%,
+  100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+.control-play-btn:hover {
+  transform: scale(1.15);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.control-play-btn:active {
+  transform: scale(1);
+}
+
+.control-play-btn svg {
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0 4px 16px rgba(168, 85, 247, 0.6));
+}
+
+/* Progress bar wrapper */
+.control-progress-wrapper {
+  @apply w-full flex flex-col gap-1.5;
+}
+
+/* Progress slider */
+.control-progress {
+  -webkit-appearance: none;
+  appearance: none;
+  @apply w-full h-1.5 rounded-full cursor-pointer outline-none;
+  background: #333333;
+  transition: all 0.3s ease;
+}
+
+.control-progress:hover {
+  height: 6px;
+}
+
+.control-progress::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  @apply w-3.5 h-3.5 rounded-full cursor-pointer;
+  background: linear-gradient(135deg, #a855f7, #ec4899);
+  border: 2px solid #ffffff;
+  box-shadow: 0 2px 8px rgba(168, 85, 247, 0.6),
+    0 0 20px rgba(168, 85, 247, 0.4);
+  transition: all 0.3s ease;
+}
+
+.control-progress:hover::-webkit-slider-thumb {
+  @apply w-4 h-4;
+  box-shadow: 0 4px 16px rgba(168, 85, 247, 0.8),
+    0 0 30px rgba(168, 85, 247, 0.6);
+  transform: scale(1.1);
+}
+
+.control-progress::-moz-range-thumb {
+  @apply w-3.5 h-3.5 rounded-full cursor-pointer border-0;
+  background: linear-gradient(135deg, #a855f7, #ec4899);
+  box-shadow: 0 2px 8px rgba(168, 85, 247, 0.6),
+    0 0 20px rgba(168, 85, 247, 0.4);
+  transition: all 0.3s ease;
+}
+
+.control-progress:hover::-moz-range-thumb {
+  @apply w-4 h-4;
+  box-shadow: 0 4px 16px rgba(168, 85, 247, 0.8),
+    0 0 30px rgba(168, 85, 247, 0.6);
+  transform: scale(1.1);
+}
+
+.control-progress::-moz-range-track {
+  @apply h-1.5 rounded-full;
+  background: #333333;
+}
+
+/* Time display */
+.control-times {
+  @apply flex justify-between text-xs font-medium;
+  color: rgba(156, 163, 175, 0.9);
+  padding: 0 2px;
+}
+
+/* Responsive Design */
+@media (max-width: 760px) {
+  .control-root {
+    @apply w-full gap-3;
+  }
+
+  .control-buttons {
+    @apply gap-4;
+  }
+
+  .control-icon-btn {
+    @apply p-2;
+  }
+
+  .control-play-btn {
+    @apply p-1.5;
+  }
+}
+
+@media (max-width: 480px) {
+  .control-buttons {
+    @apply gap-3;
+  }
+
+  .control-icon-btn {
+    @apply p-1.5;
+  }
+}

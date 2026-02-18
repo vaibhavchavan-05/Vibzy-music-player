@@ -1,0 +1,195 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom base styles */
+@layer base {
+  * {
+    @apply m-0;
+  }
+
+  body {
+    @apply font-sans bg-gradient-to-br from-gray-900 via-black to-gray-900;
+  }
+}
+
+/* Custom component classes */
+@layer components {
+  /* Modern button styles */
+  .btn-icon {
+    @apply bg-transparent border-none cursor-pointer p-2 inline-flex items-center justify-center 
+           rounded-full transition-all duration-200 hover:bg-white/10 active:scale-95;
+  }
+
+  .btn-primary {
+    @apply bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold 
+           px-6 py-3 rounded-full transition-all duration-300 
+           hover:from-purple-700 hover:to-pink-700 hover:shadow-lg hover:shadow-purple-500/50
+           active:scale-95 border-none cursor-pointer;
+  }
+
+  .btn-secondary {
+    @apply bg-white/10 text-white font-semibold px-6 py-3 rounded-full 
+           transition-all duration-300 hover:bg-white/20 hover:shadow-lg
+           active:scale-95 border-none cursor-pointer backdrop-blur-sm;
+  }
+
+  /* Card styles with glassmorphism */
+  .card-glass {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl 
+           transition-all duration-300 hover:bg-white/10 hover:border-white/20
+           hover:-translate-y-1 hover:shadow-xl hover:shadow-purple-500/10;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .card-hover:hover {
+    @apply -translate-y-1 shadow-2xl shadow-purple-500/20;
+  }
+
+  /* Input styles */
+  .input-modern {
+    @apply bg-white/5 border border-white/10 rounded-xl px-4 py-3 
+           text-white placeholder-gray-400 transition-all duration-300
+           focus:outline-none focus:border-purple-500 focus:bg-white/10
+           focus:shadow-lg focus:shadow-purple-500/20;
+  }
+
+  /* Gradient text effect */
+  .text-gradient {
+    @apply bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 
+           bg-clip-text text-transparent;
+  }
+
+  /* Animated gradient background */
+  .bg-animated-gradient {
+    @apply bg-gradient-to-br from-purple-600/20 via-pink-600/20 to-blue-600/20;
+    animation: gradientShift 8s ease infinite;
+    background-size: 200% 200%;
+  }
+}
+
+/* Custom utilities */
+@layer utilities {
+  /* Glow effects */
+  .glow-purple {
+    @apply shadow-lg shadow-purple-500/50;
+  }
+
+  .glow-pink {
+    @apply shadow-lg shadow-pink-500/50;
+  }
+
+  /* Backdrop blur utilities */
+  .backdrop-blur-glass {
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+}
+
+/* Custom scrollbar styles - defined outside @layer */
+.scrollbar-modern::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+.scrollbar-modern::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-modern::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 9999px;
+  transition: background-color 0.3s ease;
+}
+
+.scrollbar-modern::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Thin scrollbar variant */
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background: rgba(168, 85, 247, 0.3);
+  border-radius: 9999px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+  background: rgba(168, 85, 247, 0.5);
+}
+
+/* Hide scrollbar but keep functionality */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Keyframe animations */
+@keyframes gradientShift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Animation utility classes */
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.5s ease-out;
+}
+
+.animate-pulse-slow {
+  animation: pulse 3s ease-in-out infinite;
+}

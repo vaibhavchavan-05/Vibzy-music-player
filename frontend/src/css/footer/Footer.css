@@ -1,0 +1,124 @@
+.footer-root {
+  @apply flex w-full justify-between items-center text-white  pt-8 pb-10 px-6 box-border flex-shrink-0 
+         max-[760px]:flex-col max-[760px]:gap-4 max-[760px]:p-4 max-[760px]:items-stretch 
+         relative overflow-hidden h-[110px];
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.7));
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 -4px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Glass effect overlay */
+.footer-root::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(168, 85, 247, 0.05),
+    transparent 50%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.footer-root > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Animated gradient glow line at top */
+.footer-glow::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 200%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(168, 85, 247, 0.6),
+    rgba(236, 72, 153, 0.6),
+    rgba(168, 85, 247, 0.6),
+    transparent
+  );
+  animation: footer-glow-move 4s linear infinite;
+  z-index: 10;
+  pointer-events: none;
+  filter: blur(1px);
+}
+
+/* Secondary subtle glow */
+.footer-glow::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(168, 85, 247, 0.2) 50%,
+    transparent
+  );
+  z-index: 9;
+  pointer-events: none;
+}
+
+@keyframes footer-glow-move {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(50%);
+  }
+}
+
+/* Subtle pulsing ambient light effect */
+@keyframes ambientPulse {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.footer-root::before {
+  content: "";
+  position: absolute;
+  top: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  height: 100px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(168, 85, 247, 0.15),
+    transparent 70%
+  );
+  animation: ambientPulse 4s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 760px) {
+  .footer-root {
+    @apply h-[110px] py-3 px-4;
+  }
+
+  .footer-glow::before {
+    animation: footer-glow-move 3s linear infinite;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-root {
+    @apply h-[120px] py-2.5 px-3;
+  }
+}

@@ -1,0 +1,259 @@
+/* =========================
+   Wrapper
+========================= */
+.editprofile-wrapper {
+  @apply text-white p-2;
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* =========================
+   Title & Subtitle
+========================= */
+.editprofile-title {
+  @apply mb-2 text-[26px] font-bold tracking-wide;
+  background: linear-gradient(135deg, #ffffff, #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: slideInLeft 0.6s ease-out;
+}
+
+.editprofile-wrapper p {
+  @apply mb-6 text-[15px] text-gray-300;
+  animation: slideInLeft 0.6s ease-out 0.1s both;
+}
+
+/* =========================
+   Form Layout
+========================= */
+.editprofile-form {
+  @apply flex flex-col gap-5;
+  animation: slideInUp 0.6s ease-out 0.2s both;
+}
+
+/* =========================
+   Profile Image
+========================= */
+.profile-image-container {
+  @apply relative mx-auto mb-2
+         h-24 w-24 rounded-full
+         bg-white/5 border border-white/10
+         flex items-center justify-center
+         backdrop-blur-md
+         transition-all duration-300;
+}
+
+.profile-image-container:hover {
+  @apply border-purple-500/40 shadow-lg shadow-purple-500/20;
+}
+
+.profile-image {
+  @apply h-full w-full rounded-full object-cover;
+}
+
+.profile-placeholder {
+  @apply flex items-center justify-center text-gray-300;
+}
+
+/* Upload Icon */
+.image-upload-icon {
+  @apply absolute -bottom-1 -right-1
+         h-8 w-8 rounded-full
+         bg-gradient-to-br from-purple-600 to-pink-600
+         flex items-center justify-center
+         text-sm cursor-pointer
+         shadow-lg shadow-purple-500/40
+         transition-all duration-300;
+}
+
+.image-upload-icon:hover {
+  @apply scale-110 shadow-purple-500/70;
+}
+
+/* =========================
+   Error Message
+========================= */
+.editprofile-error {
+  @apply px-4 py-3 rounded-xl
+         text-sm font-medium
+         text-red-300
+         bg-red-500/10
+         border border-red-500/40
+         backdrop-blur-md;
+  animation: shakeError 0.5s ease-out;
+}
+
+/* =========================
+   Password Toggle
+========================= */
+.editprofile-password-toggle {
+  @apply mt-1 self-start
+         text-sm font-semibold
+         text-purple-400
+         hover:text-purple-300
+         transition-colors duration-200
+         cursor-pointer;
+}
+
+/* =========================
+   Actions
+========================= */
+.editprofile-actions {
+  @apply flex justify-end gap-3 mt-3;
+}
+
+/* Cancel Button */
+.editprofile-btn-cancel {
+  @apply px-5 py-2.5 rounded-xl
+         text-sm font-semibold
+         text-white
+         bg-white/5
+         border border-white/10
+         backdrop-blur-sm
+         transition-all duration-300
+         cursor-pointer;
+}
+
+.editprofile-btn-cancel:hover {
+  @apply bg-white/10;
+}
+
+.editprofile-btn-cancel:disabled {
+  @apply opacity-50 cursor-not-allowed;
+}
+
+/* Submit Button */
+.editprofile-btn-submit {
+  @apply relative overflow-hidden
+         px-6 py-3 rounded-xl
+         text-sm font-bold uppercase tracking-wide
+         text-white
+         bg-gradient-to-r from-purple-600 to-pink-600
+         border-none cursor-pointer
+         transition-all duration-300
+         shadow-lg shadow-purple-500/40;
+}
+
+.editprofile-btn-submit::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #9333ea, #db2777);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.editprofile-btn-submit:hover::before {
+  opacity: 1;
+}
+
+.editprofile-btn-submit:hover {
+  @apply -translate-y-0.5 shadow-xl shadow-purple-500/60;
+}
+
+.editprofile-btn-submit:active {
+  @apply scale-95 translate-y-0;
+}
+
+.editprofile-btn-submit span {
+  position: relative;
+  z-index: 1;
+}
+
+.editprofile-btn-submit:disabled {
+  @apply opacity-50 cursor-not-allowed shadow-purple-500/20;
+}
+
+.editprofile-btn-submit:disabled:hover {
+  @apply translate-y-0 shadow-purple-500/20;
+}
+
+.editprofile-btn-submit:disabled::before {
+  opacity: 0;
+}
+
+/* =========================
+   Animations
+========================= */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shakeError {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-8px);
+  }
+  75% {
+    transform: translateX(8px);
+  }
+}
+
+/* =========================
+   Responsive
+========================= */
+@media (max-width: 768px) {
+  .editprofile-wrapper {
+    @apply p-1;
+  }
+
+  .editprofile-title {
+    @apply text-[24px];
+  }
+
+  .editprofile-wrapper p {
+    @apply text-sm mb-5;
+  }
+
+  .editprofile-form {
+    @apply gap-4;
+  }
+
+  .editprofile-btn-submit {
+    @apply px-5 py-2.5;
+  }
+}
+
+@media (max-width: 480px) {
+  .editprofile-title {
+    @apply text-[22px];
+  }
+
+  .editprofile-wrapper p {
+    @apply text-[13px] mb-4;
+  }
+
+  .profile-image-container {
+    @apply h-20 w-20;
+  }
+
+  .editprofile-actions {
+    @apply flex-col gap-2;
+  }
+
+  .editprofile-btn-cancel,
+  .editprofile-btn-submit {
+    @apply w-full;
+  }
+}
